@@ -1,0 +1,23 @@
+import {readFile,readdir} from 'node:fs/promises';
+const files=(await readdir(new URL('../content/posts/',import.meta.url))).filter(x=>x.endsWith('.json'));
+const knownAuthors=new Set(['xu-taotao','jiang-xiaoxia','zhang-ziyuan']);
+const knownServices=new Set(['divorce','children','property','debt','business-assets','agreements','inheritance']);
+const errors=[];const slugs=new Set();let published=0;
+const validDate=(x)=>/^\d{4}-\d{2}-\d{2}$/.test(x)&&!Number.isNaN(Date.parse(x))&&new Date(x).toISOString().slice(0,10)===x;
+for(const file of files){let a;try{a=JSON.parse(await readFile(new URL('../content/posts/'+file,import.meta.url),'utf8'));}catch{errors.push(file+': invalid JSON');continue;}
+const fail=(msg)=>errors.push(file+': '+msg);
+if(!/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/.test(a.slug))fail('invalid slug');
+if(slugs.has(a.slug))fail('duplicate slug');slugs.add(a.slug);
+if(!['draft','published'].includes(a.status))fail('unknown status');
+if(a.status!=='published')continue;published++;
+if(a.reviewStatus!=='approved')fail('review must be approved');
+for(const key of ['title','summary','jurisdiction'])if(typeof a[key]!=='string'||!a[key].trim())fail('missing '+key);
+if(!knownAuthors.has(a.authorId)||!knownAuthors.has(a.reviewerId))fail('unknown author or reviewer');
+if(!knownServices.has(a.serviceSlug))fail('unknown service');
+for(const k of ['datePublished','dateModified','lastReviewed'])if(!validDate(a[k]))fail('invalid '+k);
+if(a.dateModified<a.datePublished||a.lastReviewed<a.dateModified||a.lastReviewed>new Date().toISOString().slice(0,10))fail('review/publication chronology invalid');
+if(!Array.isArray(a.sourceUrls)||!a.sourceUrls.length)fail('missing law sources');else for(const s of a.sourceUrls){if(!s.name||!/^https:\/\//.test(s.url))fail('source needs name and HTTPS URL');}
+if(!Array.isArray(a.sections)||!a.sections.length)fail('missing body sections');else {const ids=new Set();for(const s of a.sections){if(!/^[a-z][a-z0-9-]*$/.test(s.id)||ids.has(s.id))fail('invalid or duplicate section id');ids.add(s.id);if(!s.title||!Array.isArray(s.paragraphs)||!s.paragraphs.length||s.paragraphs.some(p=>typeof p!=='string'||!p.trim()))fail('invalid section body');}}
+if(!Array.isArray(a.faqs)||a.faqs.some(f=>!f.q||!f.a))fail('invalid FAQ');
+}
+if(errors.length){console.error(errors.join('\n'));process.exit(1);}console.log(`Content validation passed: ${published} published articles, ${files.length-published} drafts excluded.`);

@@ -1,0 +1,4 @@
+'use client';
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetClose } from '@/components/ui/sheet';
+import { nav, site } from '@/lib/site';
+export function MobileNav(){return <div className="mobile-menu"><Sheet><SheetTrigger className="menu-trigger" aria-label="打开网站导航"><span aria-hidden="true">☰</span><span>菜单</span></SheetTrigger><SheetContent className="mobile-panel" showCloseButton={false}><SheetHeader><SheetTitle>江怀 · 婚姻家庭</SheetTitle><SheetDescription>法律服务与咨询准备</SheetDescription></SheetHeader><SheetClose className="mobile-close" aria-label="关闭导航">关闭 ×</SheetClose><nav aria-label="移动端导航" className="mobile-links"><a href="/">首页</a>{nav.map(n=><a key={n.href} href={n.href}>{n.label}<span>↗</span></a>)}</nav><div className="mobile-contact"><a href={site.phoneHref}>{site.phone}</a><p>电话 / 微信同号 · {site.contactLabel}</p><p>{site.hours}</p></div></SheetContent></Sheet></div>}

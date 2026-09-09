@@ -1,0 +1,9 @@
+/// <reference types="vite/client" />
+import {findLawyer} from './lawyers';
+import {findService} from './services';
+import {absolute} from './site';
+import {firmId,personSchema,webpageSchema} from './schema';
+export type Article={slug:string;status:'draft'|'published';reviewStatus:'pending'|'approved';title:string;summary:string;serviceSlug:string;authorId:string;reviewerId:string;datePublished:string;dateModified:string;lastReviewed:string;jurisdiction:string;sourceUrls:{name:string;url:string}[];sections:{id:string;title:string;paragraphs:string[];bullets?:string[]}[];faqs:{q:string;a:string}[]};
+const modules=import.meta.glob<Article>('../content/posts/*.json',{eager:true,import:'default'});
+export const publishedArticles=Object.values(modules).filter(a=>a.status==='published'&&a.reviewStatus==='approved'&&findLawyer(a.authorId)&&findLawyer(a.reviewerId)&&findService(a.serviceSlug)&&a.title&&a.lastReviewed&&a.sections.length>0).sort((a,b)=>b.datePublished.localeCompare(a.datePublished));
+export function articleSchemas(a:Article){const path='/insights/'+a.slug+'/';const author=findLawyer(a.authorId)!;const reviewer=findLawyer(a.reviewerId)!;return [personSchema(author),...(reviewer.id===author.id?[]:[personSchema(reviewer)]),{...webpageSchema(path,a.title,a.summary),mainEntity:{'@id':absolute(path+'#article')},reviewedBy:{'@id':personSchema(reviewer)['@id']},lastReviewed:a.lastReviewed},{'@type':'Article','@id':absolute(path+'#article'),headline:a.title,description:a.summary,inLanguage:'zh-CN',author:{'@id':personSchema(author)['@id']},publisher:{'@id':firmId},datePublished:a.datePublished,dateModified:a.dateModified,mainEntityOfPage:{'@id':absolute(path+'#webpage')},about:{'@id':absolute('/services/'+a.serviceSlug+'/#service')},citation:a.sourceUrls.map(s=>s.url),articleSection:findService(a.serviceSlug)!.title}];}

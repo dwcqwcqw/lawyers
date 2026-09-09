@@ -1,0 +1,7 @@
+.git
+.openai
+.wrangler
+node_modules
+dist
+vercel-static
+*.tsbuildinfo

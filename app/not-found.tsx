@@ -1,0 +1,2 @@
+import {ContactBand} from '@/components/site-shared';
+export default function NotFound(){return <main id="main"><section className="section"><div className="wrap"><div className="eyebrow">404 · PAGE NOT FOUND</div><h1 className="serif" style={{fontSize:40,margin:'20px 0'}}>这个页面暂时无法找到。</h1><p>您可以从业务领域或家事指南继续查找相关信息。</p><div className="actions"><a className="btn" href="/services/">查看业务领域 →</a><a className="text-link" href="/insights/">阅读家事指南 →</a></div></div></section><ContactBand/></main>}

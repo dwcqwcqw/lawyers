@@ -1,0 +1,5 @@
+import {pageMeta} from '@/lib/site';
+import {webpageSchema,breadcrumbSchema} from '@/lib/schema';
+import {JsonLd,PageIntro} from '@/components/site-shared';
+export const metadata=pageMeta('隐私与咨询信息说明','浏览本网站及联系江怀律师事务所时的个人信息与材料提供说明。','/privacy/');
+export default function Privacy(){return <main id="main"><JsonLd nodes={[webpageSchema('/privacy/','隐私说明','隐私说明'),breadcrumbSchema([{name:'隐私说明',path:'/privacy/'}])]}/><PageIntro eyebrow="PRIVACY" title="尊重每一个家庭的隐私。" description="先概括问题，在明确沟通对象、用途和渠道后，再提供必要材料。" items={[{name:'隐私说明',path:'/privacy/'}]}/><section className="section"><div className="wrap reading long-copy"><h2>浏览网站</h2><p>本网站当前不提供案件材料上传或在线咨询表单，也不要求您填写身份证、银行账户或儿童信息。网站托管服务可能为访问、安全和运行维护记录必要请求信息。</p><h2>复制和打印</h2><p>复制地址功能仅在您的设备上将地址写入剪贴板。准备清单可以打印使用，本页不会收集或保存您在纸上记录的内容。</p><h2>电话与后续咨询</h2><p>点击电话链接会调用设备的通话功能。正式咨询前，请与接待人员确认所需信息、传递方式、材料接收人及服务范围；首次联系可先说明概括情况，避免通过不明渠道发送敏感原件。</p><h2>外部链接</h2><p>网站中指向法院、司法行政等机构的链接将打开第三方网站，其信息处理规则由相应运营方决定。</p><h2>查询与更正</h2><p>如需就向本所提供的信息提出查询、更正或其他请求，请通过<a className="registry-link" href="/contact/">本所办公联系方式</a>说明具体事项。我们会先核实请求及身份，再沟通相应处理。</p></div></section></main>}
