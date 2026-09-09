@@ -1,6 +1,6 @@
 # 江怀律师事务所 · 婚姻家庭官网
 
-生产网站：https://jianghuai-family-law.vercel.app
+生产网站：https://jianghuai-family-law-seven.vercel.app
 
 ## 本地开发与验证
 
@@ -12,7 +12,7 @@
 
 ## Vercel 自动部署
 
-根目录 `vercel.json` 指定安装、构建命令及输出目录。将现有 Vercel 项目 `jianghuai-family-law` 的 Git 连接设置为此仓库，生产分支设为 `main`。推送后 Vercel 会重新构建全部页面及经过审核的文章。
+根目录 `vercel.json` 指定安装、构建命令及输出目录。Vercel 项目 `jianghuai-family-law` 已连接 `dwcqwcqw/lawyers`，生产分支为 `main`。推送后 Vercel 会重新构建全部页面及经过审核的文章。
 
 导出程序仅在构建过程中启动临时本地服务器。最终部署为完整 HTML、CSS、JavaScript 和真实照片，包含移动导航、微信复制和打印功能；不需要 Cloudflare 运行时或数据库密钥。
 

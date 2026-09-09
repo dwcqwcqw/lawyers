@@ -39,7 +39,7 @@
 
 ## Vercel 部署
 
-2026-09-09 已部署到 yaya / jianghuai-family-law，生产地址为 https://jianghuai-family-law.vercel.app 。本地 .vercel/project.json 保存项目绑定。
+2026-09-09 已部署到 Bailey's projects / jianghuai-family-law，生产地址为 https://jianghuai-family-law-seven.vercel.app 。本地 .vercel/project.json 保存项目绑定。
 
 运行 npm run export:vercel 会先审核内容并构建，再通过临时本地服务器按 Sitemap 导出完整 HTML 和客户端资源到 vercel-static/。上传该目录的文件到现有 Vercel 项目；不用上传 Worker 产物。新增文章也会随 Sitemap 自动导出。当前只有静态页面、复制与打印交互，不含服务器表单或 CMS。若以后增加服务器接口，需单独实现 Vercel 运行适配。
 
