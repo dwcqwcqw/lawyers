@@ -13,7 +13,8 @@
     "format": "oxfmt",
     "check:content": "node scripts/validate-content.mjs",
     "typecheck": "tsc --noEmit",
-    "export:vercel": "npm run build && node scripts/export-vercel.mjs"
+    "export:vercel": "npm run build && node scripts/export-vercel.mjs && npm run check:seo",
+    "check:seo": "node scripts/check-seo.mjs"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",

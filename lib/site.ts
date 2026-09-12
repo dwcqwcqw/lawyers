@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 export const site = {
   name: '上海江怀律师事务所',
-  origin: 'https://jianghuai-family-law-seven.vercel.app',
-  indexable: false, // Structure preview; search indexing remains disabled. Enable only on the approved public origin.
-  updated: '2026-09-08',
+  origin: 'https://anxinlaw.xyz',
+  indexable: true, // Public production site; drafts remain excluded by the publishing gate.
+  updated: '2026-09-12',
   phone: '18321861851',
   phoneHref: 'tel:+8618321861851',
   wechat: '18321861851',

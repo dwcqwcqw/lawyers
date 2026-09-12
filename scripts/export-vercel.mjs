@@ -16,6 +16,8 @@ try{
  for(const url of urls){const path=new URL(url).pathname;const r=await fetch(base+path);if(!r.ok)throw new Error('Failed '+path);const html=await r.text();if(!html.includes('18321861851')||html.includes('021-35050167'))throw new Error('Stale contact on '+path);if(html.includes('chatgpt.site'))throw new Error('Old hosting reference on '+path);const destination=resolve(output,'.'+path,'index.html');await mkdir(dirname(destination),{recursive:true});await writeFile(destination,html);}
  await writeFile(output+'/sitemap.xml',sitemap);await writeFile(output+'/robots.txt',await(await fetch(base+'/robots.txt')).text());
  const missing=await fetch(base+'/not-a-real-page/');if(missing.status!==404)throw new Error('Expected 404');await writeFile(output+'/404.html',await missing.text());
- await writeFile(output+'/vercel.json',JSON.stringify({$schema:'https://openapi.vercel.sh/vercel.json',cleanUrls:true,trailingSlash:true,headers:[{source:'/(.*)',headers:[{key:'X-Content-Type-Options',value:'nosniff'},{key:'Referrer-Policy',value:'strict-origin-when-cross-origin'}]}]},null,2));
+ const config=JSON.parse(await readFile('vercel.json','utf8'));
+ const {framework,installCommand,buildCommand,outputDirectory,...staticConfig}=config;
+ await writeFile(output+'/vercel.json',JSON.stringify(staticConfig,null,2));
  console.log('Exported '+urls.length+' complete HTML pages with client assets to '+output);
 }finally{server.kill('SIGTERM');}

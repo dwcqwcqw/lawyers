@@ -1,6 +1,6 @@
 # 江怀律师事务所 · 婚姻家庭官网
 
-生产网站：https://jianghuai-family-law-seven.vercel.app
+生产网站：https://anxinlaw.xyz
 
 ## 本地开发与验证
 
@@ -16,6 +16,6 @@
 
 导出程序仅在构建过程中启动临时本地服务器。最终部署为完整 HTML、CSS、JavaScript 和真实照片，包含移动导航、微信复制和打印功能；不需要 Cloudflare 运行时或数据库密钥。
 
-文章流程见 [CONTENT_GUIDE.md](CONTENT_GUIDE.md)。电话与微信均为 18321861851，备注为律师助理。索引开关与规范域名在 `lib/site.ts`；目前保留 noindex。
+文章流程见 [CONTENT_GUIDE.md](CONTENT_GUIDE.md)。电话与微信均为 18321861851，备注为律师助理。索引开关与规范域名在 `lib/site.ts`；正式站已开放索引。
 
 不要将飞书密钥、案卷、当事人材料或未脱敏案例提交到仓库。
