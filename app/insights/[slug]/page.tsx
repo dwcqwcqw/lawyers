@@ -144,16 +144,6 @@ export default async function ArticlePage({ params }: Props) {
                 ) : (
                   s.paragraphs.map((p, i) => <p key={i}>{p}</p>)
                 )}
-                {s.sourceRefs?.length ? (
-                  <p className="section-citations">
-                    本节依据：
-                    {s.sourceRefs.map((n) => (
-                      <a href={'#source-' + n} key={n}>
-                        [{n}] {a.sourceUrls[n - 1].name}
-                      </a>
-                    ))}
-                  </p>
-                ) : null}
                 {s.bullets ? (
                   <ul>
                     {s.bullets.map((b) => (

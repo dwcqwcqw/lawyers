@@ -13,10 +13,17 @@ import { InsightArticles } from '@/components/insight-articles';
 import { webpageSchema, breadcrumbSchema } from '@/lib/schema';
 export const metadata = pageMeta(
   '婚姻家庭法律指南｜上海家事专题与咨询准备',
-  '上海江怀律师事务所婚姻家庭知识目录：离婚、房产、抚养、债务、股权、家庭协议、继承与上海咨询。按主题查阅准备清单、法源和经审核发布的文章。',
+  '上海江怀律师事务所婚姻家庭知识目录：离婚、房产、抚养、债务、股权、家庭协议、继承与上海咨询。按主题查阅准备清单、法源和已发布的文章。',
   '/insights/',
 );
 export default function Insights() {
+  const latestArticles = [...publishedArticles]
+    .sort(
+      (a, b) =>
+        b.dateModified.localeCompare(a.dateModified) ||
+        b.datePublished.localeCompare(a.datePublished),
+    )
+    .slice(0, 6);
   return (
     <main id="main">
       <JsonLd
@@ -48,12 +55,38 @@ export default function Insights() {
       />
       <div className="insights-bar">
         <div className="wrap">
+          <a href="#latest">最新更新 ↓</a>
           <a href="#topics">按问题找专题 ↓</a>
           <a href="#preparation">准备咨询材料 ↓</a>
-          <a href="#latest">阅读最新文章 ↓</a>
           <a href="/sources/">核对法律原文 ↗</a>
         </div>
       </div>
+      <section className="section insights-latest" id="latest">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <div className="eyebrow">LATEST INSIGHTS</div>
+              <h2 className="serif">最新更新</h2>
+            </div>
+          </div>
+          <p className="latest-description">
+            新发布与新修订的家事解读，点击文章即可阅读全文。
+          </p>
+          {latestArticles.length ? (
+            <InsightArticles articles={latestArticles} />
+          ) : (
+            <div className="insights-empty">
+              <h3>专题文章正在编写与审核</h3>
+              <p>
+                通过审核的文章将在这里陆续发布，并归入对应专题。您现在可以浏览专题中的事实梳理、准备清单与法律核验入口。
+              </p>
+              <a className="text-link" href="/editorial-policy/">
+                了解文章发布标准 →
+              </a>
+            </div>
+          )}
+        </div>
+      </section>
       <section className="section" id="topics">
         <div className="wrap">
           <div className="section-head">
@@ -100,14 +133,16 @@ export default function Insights() {
               都应能找到依据。
             </h2>
             <p>
-              上海江怀律师事务所维护本栏目。法律解读须经过实际审核后发布，署名与审核信息随文章展示。
+              上海江怀律师事务所维护本栏目。文章标注真实作者与更新时间；已确认的复核信息随文章展示。
             </p>
             <a href="/about/">了解律所与核验入口 →</a>
           </div>
           <div className="trust-links">
             <a href="/lawyers/">
               <strong>谁在解释与审核</strong>
-              <span>查看律师背景；文章关联具体作者与复核人。</span>
+              <span>
+                查看律师背景；文章关联具体作者，实际复核信息以文章标注为准。
+              </span>
             </a>
             <a href="/sources/">
               <strong>依据来自哪里</strong>
@@ -142,29 +177,6 @@ export default function Insights() {
               </a>
             ))}
           </div>
-        </div>
-      </section>
-      <section className="section section-muted" id="latest">
-        <div className="wrap">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow">LATEST INSIGHTS</div>
-              <h2 className="serif">律师观点与家事解读</h2>
-            </div>
-          </div>
-          {publishedArticles.length ? (
-            <InsightArticles articles={publishedArticles} />
-          ) : (
-            <div className="insights-empty">
-              <h3>专题文章正在编写与审核</h3>
-              <p>
-                通过审核的文章将在这里陆续发布，并归入对应专题。您现在可以浏览专题中的事实梳理、准备清单与法律核验入口。
-              </p>
-              <a className="text-link" href="/editorial-policy/">
-                了解文章发布标准 →
-              </a>
-            </div>
-          )}
         </div>
       </section>
       <ContactBand />
