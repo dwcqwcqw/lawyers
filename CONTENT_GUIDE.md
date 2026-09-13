@@ -66,3 +66,11 @@
 发布前执行 `npm run check:content`、`npm run typecheck`、`npm run export:vercel`。正式文章会自动进入总目录、所属专题/子目录、面包屑、Article JSON-LD 和 sitemap。草稿不公开，引用未发布文章会阻止构建。专题页只使用 CollectionPage / ItemList；不会把目录、编写计划或空状态声明为已审核文章。schema 只表达可见内容，不保证任何平台推荐或引用。
 
 文章正文末尾统一展示律所地址及电话/微信 18321861851（律师助理），由 `lib/site.ts` 维护。
+
+## 原稿授权发布与富文本（2026-09-13）
+
+用户明确要求发布指定原稿时，可使用 `reviewStatus: publication-approved`，同时记录 `publicationApproval` 与 `sourceDocument`。这表示出版授权，不能冒充律师复核；不填写 `reviewerId`、`lastReviewed`，页面与 Schema 也不显示复核署名。真正完成复核后，才改为 `approved` 并填写实际复核人员和日期。
+
+正文支持 `intro`、`hero` 和 `sections[].blocks`，其中富文本块包含段落、三级标题、图片、表格，行内支持加粗与 HTTPS 链接。存在 blocks 时以其呈现正文，paragraphs 为内容校验镜像，不重复渲染。图片放在 public/images/articles/文章 slug/，标注准确替代文字与尺寸。原稿中的 FAQ 保留在原章节，避免在文末重复添加。
+
+首批发布：pregnancy-divorce-rules（A1，许涛涛）、uncooperative-spouse-divorce-debts（A2，蒋小霞）。来源为 audit 中同日飞书 API 全量读回及原图哈希核验记录；网站压缩图为保留原图内容的 WebP 版本。

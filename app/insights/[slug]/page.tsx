@@ -1,5 +1,9 @@
+/* Static export serves precompressed WebP files without an image optimization server. */
+/* oxlint-disable next/no-img-element */
 /* Native anchors preserve full-document navigation in the static HTML export. */
 /* oxlint-disable next/no-html-link-for-pages */
+import { ArticleBlocks } from '@/components/article-blocks';
+import { absolute } from '@/lib/site';
 import { notFound } from 'next/navigation';
 import { publishedArticles, articleSchemas } from '@/lib/articles';
 import { findLawyer } from '@/lib/lawyers';
@@ -20,7 +24,20 @@ export const generateStaticParams = () =>
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const a = publishedArticles.find((a) => a.slug === slug);
-  return a ? pageMeta(a.title, a.summary, '/insights/' + a.slug + '/') : {};
+  if (!a) return {};
+  const meta = pageMeta(a.title, a.summary, '/insights/' + a.slug + '/');
+  return {
+    ...meta,
+    openGraph: {
+      ...meta.openGraph,
+      type: 'article',
+      publishedTime: a.datePublished,
+      modifiedTime: a.dateModified,
+      ...(a.hero
+        ? { images: [{ url: absolute(a.hero.src), alt: a.hero.alt }] }
+        : {}),
+    },
+  };
 }
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
@@ -41,9 +58,12 @@ export default async function ArticlePage({ params }: Props) {
     { name: a.title, path: '/insights/' + a.slug + '/' },
   ];
   const author = findLawyer(a.authorId)!;
-  const reviewer = findLawyer(a.reviewerId)!;
+  const reviewer =
+    a.reviewStatus === 'approved' && a.reviewerId
+      ? findLawyer(a.reviewerId)
+      : undefined;
   return (
-    <main id="main">
+    <main id="main" className="insight-detail">
       <JsonLd nodes={[...articleSchemas(a), breadcrumbSchema(crumbs)]} />
       <PageIntro
         eyebrow="JIANGHUAI INSIGHTS"
@@ -51,33 +71,79 @@ export default async function ArticlePage({ params }: Props) {
         description={a.summary}
         items={crumbs}
       />
-      <section className="section">
+      {a.hero ? (
+        <div className="wrap article-hero">
+          <figure>
+            <img
+              src={a.hero.src}
+              alt={a.hero.alt}
+              width={a.hero.width}
+              height={a.hero.height}
+              fetchPriority="high"
+            />
+            <figcaption>{a.hero.alt}</figcaption>
+          </figure>
+        </div>
+      ) : null}
+      <section className="section article-content-section">
         <div className="wrap content-layout">
-          <article className="reading">
+          <article className="reading article-reading">
             <div className="article-meta">
               <a rel="author" href={'/lawyers/' + author.id + '/'}>
-                作者：{author.name}律师
+                {a.authorLine || `作者：${author.name}律师`}
               </a>
-              <a href={'/lawyers/' + reviewer.id + '/'}>
-                复核：{reviewer.name}律师
-              </a>
+              {reviewer ? (
+                <a href={'/lawyers/' + reviewer.id + '/'}>
+                  复核：{reviewer.name}律师
+                </a>
+              ) : null}
               <span>
                 发布：<time dateTime={a.datePublished}>{a.datePublished}</time>
               </span>
               <span>
                 更新：<time dateTime={a.dateModified}>{a.dateModified}</time>
               </span>
+              {reviewer ? (
+                <span>
+                  复核：<time dateTime={a.lastReviewed}>{a.lastReviewed}</time>
+                </span>
+              ) : null}
               <span>
-                复核：<time dateTime={a.lastReviewed}>{a.lastReviewed}</time>
+                约{' '}
+                {Math.ceil(
+                  a.sections.reduce(
+                    (n, s) => n + s.paragraphs.join('').length,
+                    0,
+                  ) / 500,
+                )}{' '}
+                分钟阅读
               </span>
             </div>
             <p className="note">适用范围：{a.jurisdiction}</p>
+            <details className="article-mobile-toc">
+              <summary>本文目录 · {a.sections.length} 个部分</summary>
+              <nav aria-label="文章目录">
+                {a.sections.map((s) => (
+                  <a key={s.id} href={'#' + s.id}>
+                    {s.title}
+                  </a>
+                ))}
+              </nav>
+            </details>
+            {a.intro?.length ? (
+              <div className="article-lead">
+                <span className="eyebrow">先读这段</span>
+                <ArticleBlocks blocks={a.intro} />
+              </div>
+            ) : null}
             {a.sections.map((s) => (
               <section id={s.id} key={s.id}>
                 <h2>{s.title}</h2>
-                {s.paragraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
+                {s.blocks ? (
+                  <ArticleBlocks blocks={s.blocks} />
+                ) : (
+                  s.paragraphs.map((p, i) => <p key={i}>{p}</p>)
+                )}
                 {s.sourceRefs?.length ? (
                   <p className="section-citations">
                     本节依据：

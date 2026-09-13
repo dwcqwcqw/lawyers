@@ -1,4 +1,5 @@
 import { readFile, readdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 const files = (
   await readdir(new URL('../content/posts/', import.meta.url))
 ).filter((x) => x.endsWith('.json'));
@@ -52,18 +53,38 @@ for (const file of files) {
     fail('topic/subtopic mismatch');
   if (topic?.serviceSlug && a.serviceSlug !== topic.serviceSlug)
     fail('topic/service mismatch');
-  if (a.reviewStatus !== 'approved') fail('review must be approved');
+  if (!['approved', 'publication-approved'].includes(a.reviewStatus))
+    fail('publication requires approval');
+  if (
+    a.reviewStatus === 'publication-approved' &&
+    (!a.publicationApproval?.trim() ||
+      !a.sourceDocument?.startsWith('https://'))
+  )
+    fail('explicit publication approval and source required');
+  if (
+    a.reviewStatus === 'publication-approved' &&
+    (a.reviewerId || a.lastReviewed)
+  )
+    fail('do not claim unconfirmed lawyer review');
   for (const key of ['title', 'summary', 'jurisdiction'])
     if (typeof a[key] !== 'string' || !a[key].trim()) fail('missing ' + key);
-  if (!knownAuthors.has(a.authorId) || !knownAuthors.has(a.reviewerId))
+  if (
+    !knownAuthors.has(a.authorId) ||
+    (a.reviewStatus === 'approved' && !knownAuthors.has(a.reviewerId))
+  )
     fail('unknown author or reviewer');
   if (!knownServices.has(a.serviceSlug)) fail('unknown service');
-  for (const k of ['datePublished', 'dateModified', 'lastReviewed'])
+  for (const k of [
+    'datePublished',
+    'dateModified',
+    ...(a.reviewStatus === 'approved' ? ['lastReviewed'] : []),
+  ])
     if (!validDate(a[k])) fail('invalid ' + k);
   if (
     a.dateModified < a.datePublished ||
-    a.lastReviewed < a.dateModified ||
-    a.lastReviewed > new Date().toISOString().slice(0, 10)
+    (a.reviewStatus === 'approved' &&
+      (a.lastReviewed < a.dateModified ||
+        a.lastReviewed > new Date().toISOString().slice(0, 10)))
   )
     fail('review/publication chronology invalid');
   if (!Array.isArray(a.sourceUrls) || !a.sourceUrls.length)
@@ -99,6 +120,45 @@ for (const file of files) {
       )
         fail('invalid section body');
     }
+  }
+  const validateRuns = (runs) => {
+    if (
+      !Array.isArray(runs) ||
+      runs.some(
+        (r) =>
+          typeof r.text !== 'string' ||
+          (r.href && !r.href.startsWith('https://')),
+      )
+    )
+      fail('invalid rich text or link');
+  };
+  for (const b of [
+    a.hero,
+    ...(a.intro || []),
+    ...(a.sections || []).flatMap((s) => s.blocks || []),
+  ].filter(Boolean)) {
+    if (b.type === 'image') {
+      if (
+        !/^\/images\/articles\/[a-z0-9-]+\/[a-z0-9-]+\.(webp|png|jpg)$/.test(
+          b.src,
+        ) ||
+        !existsSync(new URL('../public' + b.src, import.meta.url)) ||
+        !b.alt?.trim() ||
+        !(b.width > 0 && b.height > 0)
+      )
+        fail('invalid article image');
+    } else if (b.type === 'table') {
+      if (
+        !b.caption ||
+        !Array.isArray(b.rows) ||
+        b.rows.length < 2 ||
+        !b.rows[0]?.length ||
+        b.rows.some((r) => r.length !== b.rows[0].length)
+      )
+        fail('invalid article table');
+      else b.rows.flat().forEach(validateRuns);
+    } else if (['paragraph', 'heading'].includes(b.type)) validateRuns(b.runs);
+    else fail('unknown rich content block');
   }
   const body = [
     a.summary,
