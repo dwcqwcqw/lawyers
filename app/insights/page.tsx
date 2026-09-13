@@ -55,71 +55,47 @@ export default function Insights() {
       />
       <div className="insights-bar">
         <div className="wrap">
-          <a href="#latest">最新更新 ↓</a>
-          <a href="#topics">按问题找专题 ↓</a>
+          <a href="#topics">文章与专题 ↓</a>
           <a href="#preparation">准备咨询材料 ↓</a>
           <a href="/sources/">核对法律原文 ↗</a>
         </div>
       </div>
-      <section className="section insights-latest" id="latest">
+      <section className="section insights-latest insights-library" id="topics">
         <div className="wrap">
           <div className="section-head">
             <div>
-              <div className="eyebrow">LATEST INSIGHTS</div>
-              <h2 className="serif">最新更新</h2>
+              <div className="eyebrow">EXPLORE FAMILY LAW</div>
+              <h2 className="serif">文章与专题</h2>
             </div>
+            <p className="insights-caption">阅读最新解读，或按家庭问题查找。</p>
           </div>
-          <p className="latest-description">
-            新发布与新修订的家事解读，点击文章即可阅读全文。
-          </p>
-          {latestArticles.length ? (
-            <InsightArticles articles={latestArticles} />
-          ) : (
-            <div className="insights-empty">
-              <h3>专题文章正在编写与审核</h3>
-              <p>
-                通过审核的文章将在这里陆续发布，并归入对应专题。您现在可以浏览专题中的事实梳理、准备清单与法律核验入口。
-              </p>
-              <a className="text-link" href="/editorial-policy/">
-                了解文章发布标准 →
+          <div className="insights-library-layout">
+            <nav className="library-topics" aria-label="家事专题">
+              <h3>按主题阅读</h3>
+              <a className="library-latest-link" href="#latest">
+                最新更新 <span>↓</span>
               </a>
-            </div>
-          )}
-        </div>
-      </section>
-      <section className="section" id="topics">
-        <div className="wrap">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow">EXPLORE BY SUBJECT</div>
-              <h2 className="serif">八个专题，一张家事问题地图</h2>
-            </div>
-            <p className="insights-caption">
-              先定位主要争议，再沿相关主题补齐信息。
-            </p>
-          </div>
-          <div className="insights-topic-grid">
-            {insightTopics.map((t, i) => (
-              <article className="insights-topic-card" key={t.slug}>
-                <span className="topic-number">0{i + 1}</span>
-                <h3 className="serif">
-                  <a href={topicPath(t.slug)}>
-                    {t.title} <span aria-hidden="true">↗</span>
-                  </a>
-                </h3>
-                <p>{t.description}</p>
-                <ul>
-                  {t.subtopics.slice(0, 3).map((s) => (
-                    <li key={s.id}>
-                      <a href={topicPath(t.slug) + '#' + s.id}>{s.title}</a>
-                    </li>
-                  ))}
-                </ul>
-                <a className="text-link" href={topicPath(t.slug)}>
-                  查看完整专题与阅读路径 →
+              {insightTopics.map((t) => (
+                <a key={t.slug} href={topicPath(t.slug)}>
+                  {t.title}
+                  <span aria-hidden="true">↗</span>
                 </a>
-              </article>
-            ))}
+              ))}
+            </nav>
+            <div className="library-articles" id="latest">
+              <div className="library-articles-heading">
+                <h3>最新更新</h3>
+                <span>按更新时间排序</span>
+              </div>
+              {latestArticles.length ? (
+                <InsightArticles articles={latestArticles} />
+              ) : (
+                <div className="insights-empty">
+                  <h3>文章正在准备中</h3>
+                  <p>您可以先按主题查阅准备清单、法源与咨询信息。</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
