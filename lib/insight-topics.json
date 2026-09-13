@@ -1,0 +1,318 @@
+[
+  {
+    "id": "A",
+    "slug": "divorce",
+    "title": "离婚程序",
+    "description": "从登记与诉讼的路径梳理开始，整理程序阶段、现有文书、证据与紧急保护需求。",
+    "serviceSlug": "divorce",
+    "resourceSlug": "consultation",
+    "preparation": [
+      "婚姻登记与当前居住情况",
+      "协议草案、已有裁判或收到的程序文书",
+      "关键事件时间线与现有证据"
+    ],
+    "subtopics": [
+      {
+        "id": "A1",
+        "title": "路径选择与登记准备"
+      },
+      {
+        "id": "A2",
+        "title": "诉讼启动与证据"
+      },
+      {
+        "id": "A3",
+        "title": "庭审调解与程序变化"
+      },
+      {
+        "id": "A4",
+        "title": "后续救济与材料核验"
+      },
+      {
+        "id": "A5",
+        "title": "履行与全流程复盘"
+      },
+      {
+        "id": "A6",
+        "title": "家暴保护的申请与证据"
+      },
+      {
+        "id": "A7",
+        "title": "婚姻撤销与特殊程序"
+      }
+    ]
+  },
+  {
+    "id": "B",
+    "slug": "property",
+    "title": "房产与财产",
+    "description": "把购房、出资、登记、还贷与家庭财产放回同一条时间线，逐项确认争议和凭证。",
+    "serviceSlug": "property",
+    "resourceSlug": "property-timeline",
+    "preparation": [
+      "购房合同、登记信息及贷款文件",
+      "首付、还贷及父母出资的时间与凭证",
+      "双方已有财产约定及待核实项目"
+    ],
+    "subtopics": [
+      {
+        "id": "B1",
+        "title": "购房时间与出资主体"
+      },
+      {
+        "id": "B2",
+        "title": "资金流与房贷方案"
+      },
+      {
+        "id": "B3",
+        "title": "估值与多类家庭资产"
+      },
+      {
+        "id": "B4",
+        "title": "收入认定与异常财产线索"
+      },
+      {
+        "id": "B5",
+        "title": "保全履行与综合材料"
+      },
+      {
+        "id": "B6",
+        "title": "同居财产与公积金"
+      }
+    ]
+  },
+  {
+    "id": "C",
+    "slug": "children",
+    "title": "子女抚养",
+    "description": "围绕孩子的实际照护、费用与探望安排，整理客观记录及需要优先解决的问题。",
+    "serviceSlug": "children",
+    "resourceSlug": "parenting-record",
+    "preparation": [
+      "孩子日常生活与照护安排",
+      "教育、医疗与生活费用记录",
+      "既有协议、裁判及探望沟通记录"
+    ],
+    "subtopics": [
+      {
+        "id": "C1",
+        "title": "直接抚养与照料条件"
+      },
+      {
+        "id": "C2",
+        "title": "特殊需求与抚养费用"
+      },
+      {
+        "id": "C3",
+        "title": "费用履行与探望设计"
+      },
+      {
+        "id": "C4",
+        "title": "探望变更与跨地生活"
+      },
+      {
+        "id": "C5",
+        "title": "隐私协议与综合证据"
+      },
+      {
+        "id": "C6",
+        "title": "藏匿子女与紧急救济"
+      }
+    ]
+  },
+  {
+    "id": "D",
+    "slug": "debt",
+    "title": "夫妻债务",
+    "description": "从借款主体、签署过程和资金用途入手，核对债务事实、已有约定与应诉材料。",
+    "serviceSlug": "debt",
+    "resourceSlug": "consultation",
+    "preparation": [
+      "借据、合同及签署人的信息",
+      "款项支付、使用与偿还的记录",
+      "催收、诉讼文书及双方内部约定"
+    ],
+    "subtopics": [
+      {
+        "id": "D1",
+        "title": "共同意思与借款真实性"
+      },
+      {
+        "id": "D2",
+        "title": "资金用途与应诉"
+      },
+      {
+        "id": "D3",
+        "title": "内部约定与账户核对"
+      },
+      {
+        "id": "D4",
+        "title": "债务时间与还款线索"
+      },
+      {
+        "id": "D5",
+        "title": "和解清偿与综合负债"
+      }
+    ]
+  },
+  {
+    "id": "E",
+    "slug": "business-assets",
+    "title": "股权与经营资产",
+    "description": "区分家庭财产与企业经营资料，梳理股权来源、持有方式、收益及估值所需文件。",
+    "serviceSlug": "business-assets",
+    "resourceSlug": "consultation",
+    "preparation": [
+      "登记、章程及取得股权的相关文件",
+      "出资、分红及经营往来记录",
+      "代持、转让、保密等已有协议"
+    ],
+    "subtopics": [
+      {
+        "id": "E1",
+        "title": "股权取得与代持"
+      },
+      {
+        "id": "E2",
+        "title": "公司治理与收益边界"
+      },
+      {
+        "id": "E3",
+        "title": "估值出资与经营参与"
+      },
+      {
+        "id": "E4",
+        "title": "权利限制与组织形式"
+      },
+      {
+        "id": "E5",
+        "title": "协议保密与履行"
+      },
+      {
+        "id": "E6",
+        "title": "网店及数字经营资产"
+      }
+    ]
+  },
+  {
+    "id": "F",
+    "slug": "agreements",
+    "title": "婚姻家庭协议",
+    "description": "围绕拟解决的问题核对财产披露、签署背景与履行安排，避免脱离事实套用文本。",
+    "serviceSlug": "agreements",
+    "resourceSlug": "consultation",
+    "preparation": [
+      "准备约定的事项与双方主要分歧",
+      "涉及财产、债务及孩子的客观资料",
+      "已有文本、签署记录和履行情况"
+    ],
+    "subtopics": [
+      {
+        "id": "F1",
+        "title": "协议类型与财产披露"
+      },
+      {
+        "id": "F2",
+        "title": "财产权利与文本依据"
+      },
+      {
+        "id": "F3",
+        "title": "签署形式与离婚财产条款"
+      },
+      {
+        "id": "F4",
+        "title": "债务孩子与履行条件"
+      },
+      {
+        "id": "F5",
+        "title": "变更再婚与传承衔接"
+      },
+      {
+        "id": "F6",
+        "title": "彩礼与同居给付"
+      }
+    ]
+  },
+  {
+    "id": "G",
+    "slug": "inheritance",
+    "title": "继承与遗嘱",
+    "description": "先厘清亲属关系、遗产范围、遗嘱和既有安排，再整理办理材料与具体争议。",
+    "serviceSlug": "inheritance",
+    "resourceSlug": "consultation",
+    "preparation": [
+      "家庭关系与相关人员基本情况",
+      "遗嘱原件线索及遗产清单",
+      "生前处分、债务与已办理手续"
+    ],
+    "subtopics": [
+      {
+        "id": "G1",
+        "title": "继承主体与遗嘱形式"
+      },
+      {
+        "id": "G2",
+        "title": "文书真实性与遗产范围"
+      },
+      {
+        "id": "G3",
+        "title": "金融资产股权与生前处分"
+      },
+      {
+        "id": "G4",
+        "title": "跨地办理与分割协议"
+      },
+      {
+        "id": "G5",
+        "title": "复杂关系与办理复盘"
+      },
+      {
+        "id": "G6",
+        "title": "监护赡养与传承衔接"
+      }
+    ]
+  },
+  {
+    "id": "H",
+    "slug": "shanghai-consultation",
+    "title": "上海与综合咨询",
+    "description": "面向上海及周边家庭，整理跨地居住、程序阶段、咨询准备与官方信息核验路径。",
+    "serviceSlug": null,
+    "resourceSlug": "consultation",
+    "preparation": [
+      "目前居住地、登记地及案件办理阶段",
+      "希望优先解决的三项问题",
+      "已有文书、关键日期与材料缺口"
+    ],
+    "subtopics": [
+      {
+        "id": "H1",
+        "title": "跨地事实与咨询入口"
+      },
+      {
+        "id": "H2",
+        "title": "官方渠道与律师选择"
+      },
+      {
+        "id": "H3",
+        "title": "费用专业协作与律师资料"
+      },
+      {
+        "id": "H4",
+        "title": "助理接待与复杂案情"
+      },
+      {
+        "id": "H5",
+        "title": "交叉问题与信息核验"
+      },
+      {
+        "id": "H6",
+        "title": "家暴识别与后续救济"
+      },
+      {
+        "id": "H7",
+        "title": "军婚复婚与特殊家庭咨询"
+      }
+    ]
+  }
+]

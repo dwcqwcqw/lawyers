@@ -44,3 +44,25 @@
 运行 npm run export:vercel 会先审核内容并构建，再通过临时本地服务器按 Sitemap 导出完整 HTML 和客户端资源到 vercel-static/。上传该目录的文件到现有 Vercel 项目；不用上传 Worker 产物。新增文章也会随 Sitemap 自动导出。当前只有静态页面、复制与打印交互，不含服务器表单或 CMS。若以后增加服务器接口，需单独实现 Vercel 运行适配。
 
 正式域名 https://anxinlaw.xyz 已开放索引，旧 Vercel 生产域名永久跳转并保留路径。不要继续上传 Sites。
+
+## 家事知识目录与文章接入（2026-09-13）
+
+`/insights/` 是总入口；`/insights/topics/{slug}/` 是八个专题页。
+`lib/insight-topics.json` 保留策略库 A–H 的 49 个二级目录 ID。二级目录是专题页内锚点，避免为尚无文章的问题生成空文章 URL。
+品牌类 I 选题按实际问题归入对应专题；纯律所或律师背景信息优先更新 `/about/` 或 `/lawyers/`，不要以多个推荐问法制造重复页面。
+
+新增文章时复制 `content/posts/_template.json`，按实际内容填写：
+
+- `topicSlug`：divorce / property / children / debt / business-assets / agreements / inheritance / shanghai-consultation。
+- `subtopicId`：从对应专题的 JSON 中选择，例如房产出资选择 B1。主专题与服务必须相符；上海综合专题按具体内容选服务。
+- `sourceUrls`：真实名称及 HTTPS 原文链接；必须用 `kind` 区分 law、official-guide、case、research、question-source。问题来源证明选题来由，不能充当法律结论依据。
+- 每个法律判断段落所在的 section 通过 `sourceRefs: [1, 2]` 引用 `sourceUrls` 的一基序号。页面显示本节依据，并可跳转至文末出处。不要为了凑引用数量添加无关链接。
+- `relatedSlugs`：只填已审核发布、能回答下一步问题的文章 slug。页面另外补充同专题相关阅读，最多展示四篇。来源不足时不虚构外链。
+- `revisionNote`：实质修改时说明修改内容与原因；同步实际 `dateModified` 和 `lastReviewed`。
+
+正文按 5000–10000 字校验：摘要、章节标题、段落、清单、FAQ 的非空白字符总和，排除 URL；不计页面导航、作者元数据、法源名称和联系方式。避免以重复段落或无关 FAQ 凑字数。
+作者与审核人须是实际参与人员。技术校验无法代替律师逐条核对法律结论、有效性、原创性、隐私和问题—来源匹配；`approved` 只能在真实完成审核后填写。
+
+发布前执行 `npm run check:content`、`npm run typecheck`、`npm run export:vercel`。正式文章会自动进入总目录、所属专题/子目录、面包屑、Article JSON-LD 和 sitemap。草稿不公开，引用未发布文章会阻止构建。专题页只使用 CollectionPage / ItemList；不会把目录、编写计划或空状态声明为已审核文章。schema 只表达可见内容，不保证任何平台推荐或引用。
+
+文章正文末尾统一展示律所地址及电话/微信 18321861851（律师助理），由 `lib/site.ts` 维护。
