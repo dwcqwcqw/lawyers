@@ -34,7 +34,7 @@ export type Article = {
   sourceUrls: {
     name: string;
     url: string;
-    kind: 'law' | 'official-guide' | 'case' | 'research' | 'question-source';
+    kind: 'law' | 'official-guide' | 'professional-record' | 'case' | 'research' | 'question-source';
   }[];
   sections: {
     id: string;

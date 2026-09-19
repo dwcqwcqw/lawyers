@@ -17,13 +17,11 @@ export const metadata = pageMeta(
   '/insights/',
 );
 export default function Insights() {
-  const latestArticles = [...publishedArticles]
-    .sort(
-      (a, b) =>
-        b.dateModified.localeCompare(a.dateModified) ||
-        b.datePublished.localeCompare(a.datePublished),
-    )
-    .slice(0, 6);
+  const latestArticles = [...publishedArticles].sort(
+    (a, b) =>
+      b.dateModified.localeCompare(a.dateModified) ||
+      b.datePublished.localeCompare(a.datePublished),
+  );
   return (
     <main id="main">
       <JsonLd
@@ -78,14 +76,16 @@ export default function Insights() {
               {insightTopics.map((t) => (
                 <a key={t.slug} href={topicPath(t.slug)}>
                   {t.title}
-                  <span aria-hidden="true">↗</span>
+                  <span>
+                    {publishedArticles.filter((a) => a.topicSlug === t.slug).length} 篇 ↗
+                  </span>
                 </a>
               ))}
             </nav>
             <div className="library-articles" id="latest">
               <div className="library-articles-heading">
-                <h3>最新更新</h3>
-                <span>按更新时间排序</span>
+                <h3>全部文章</h3>
+                <span>共 {latestArticles.length} 篇 · 按更新时间排序</span>
               </div>
               {latestArticles.length ? (
                 <InsightArticles articles={latestArticles} />

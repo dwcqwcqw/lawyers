@@ -9,11 +9,12 @@ export function InlineText({ runs }: { runs: RichRun[] }) {
       {runs.map((run, i) => {
         const text = run.bold ? <strong>{run.text}</strong> : run.text;
         if (!run.href || !run.href.startsWith('https://'))
-          return <span key={i}>{text}</span>;
+          return <span className="article-inline-text" key={i}>{text}</span>;
         const internal = run.href.startsWith('https://anxinlaw.xyz/');
         return (
           <a
             key={i}
+            className="article-inline-text"
             href={
               internal ? run.href.replace('https://anxinlaw.xyz', '') : run.href
             }

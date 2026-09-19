@@ -59,3 +59,11 @@ body{background:#fffefb}.utility-bar{background:var(--navy);color:#dbe3e7;font-s
 .insights-library .section-head{margin-bottom:30px}.insights-library-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:32px;align-items:start}.library-topics{padding:22px;background:#fff;border:1px solid #dce0dc}.library-topics h3{font-size:16px;margin:0 0 16px;color:#647078}.library-topics>a{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid #e6e8e4;font-size:15px}.library-topics>a:hover{color:var(--red);text-decoration:underline;text-underline-offset:4px}.library-topics .library-latest-link{color:var(--red);font-weight:600}.library-topics a span{color:#a88550}.library-articles{min-width:0;scroll-margin-top:140px}.library-articles-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:18px}.library-articles-heading h3{font-size:22px;font-family:var(--serif);font-weight:400}.library-articles-heading>span{font-size:12px;color:#68747a}.insights-library .article-row h3{font-size:21px}.insights-library .article-list{gap:22px}
 @media(max-width:900px){.insights-library-layout{grid-template-columns:1fr;gap:26px}.library-topics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 20px;padding:18px 22px}.library-topics h3{grid-column:1/-1;margin-bottom:10px}.library-topics>a{font-size:14px;padding:11px 0}.insights-library .section-head{margin-bottom:22px}}
 @media(max-width:500px){.library-topics{gap:0 14px;padding:16px}.library-topics>a{font-size:13px;gap:4px}.library-topics a span{display:none}.library-articles-heading h3{font-size:21px}}
+
+/* Preserve source calculations and keep wide reference tables within the reading column. */
+.article-inline-text{white-space:pre-wrap;overflow-wrap:anywhere}
+.article-table-container{min-width:0;max-width:100%}
+.article-table-scroll th{overflow-wrap:anywhere}
+.article-reading .section-source-refs{font-size:13px;line-height:1.9;color:#737b80;margin-top:22px}
+.source-list a[id]{scroll-margin-top:115px}
+.article-row .article-meta a:hover{text-decoration:underline;text-underline-offset:4px}

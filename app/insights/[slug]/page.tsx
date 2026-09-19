@@ -44,13 +44,16 @@ export default async function ArticlePage({ params }: Props) {
   const a = publishedArticles.find((a) => a.slug === slug);
   if (!a) notFound();
   const topic = findTopic(a.topicSlug)!;
-  const related = publishedArticles
-    .filter(
-      (p) =>
-        p.slug !== a.slug &&
-        ((a.relatedSlugs || []).includes(p.slug) ||
-          p.topicSlug === a.topicSlug),
-    )
+  const explicitRelated = (a.relatedSlugs || [])
+    .map((relatedSlug) => publishedArticles.find((p) => p.slug === relatedSlug))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p && p.slug !== a.slug));
+  const related = [
+    ...explicitRelated,
+    ...publishedArticles.filter(
+      (p) => p.slug !== a.slug && p.topicSlug === a.topicSlug,
+    ),
+  ]
+    .filter((p, i, list) => list.findIndex((item) => item.slug === p.slug) === i)
     .slice(0, 4);
   const crumbs = [
     { name: '家事指南', path: '/insights/' },
@@ -151,6 +154,19 @@ export default async function ArticlePage({ params }: Props) {
                     ))}
                   </ul>
                 ) : null}
+                {s.sourceRefs?.length ? (
+                  <p className="section-source-refs">
+                    本节依据：{' '}
+                    {s.sourceRefs.map((ref, i) => (
+                      <span key={ref}>
+                        {i > 0 ? '；' : ''}
+                        <a href={'#source-' + ref}>
+                          [{ref}] {a.sourceUrls[ref - 1].name}
+                        </a>
+                      </span>
+                    ))}
+                  </p>
+                ) : null}
               </section>
             ))}
             {a.faqs.length > 0 ? (
@@ -180,6 +196,7 @@ export default async function ArticlePage({ params }: Props) {
                       {
                         law: '法律原文',
                         'official-guide': '官方办理信息',
+                        'professional-record': '行业登记资料',
                         case: '公开个案',
                         research: '研究资料',
                         'question-source': '问题来源',

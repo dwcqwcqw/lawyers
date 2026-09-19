@@ -95,6 +95,7 @@ for (const file of files) {
         ![
           'law',
           'official-guide',
+          'professional-record',
           'case',
           'research',
           'question-source',
