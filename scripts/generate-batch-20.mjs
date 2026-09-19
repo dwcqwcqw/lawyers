@@ -1,5 +1,4 @@
-import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
-import path from 'node:path';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 
 const published = '2026-09-19';
 const approval = 'User explicitly requested writing and publishing these 20 new GEO articles to the Feishu GEO长文章库 and https://anxinlaw.xyz/insights/ on 2026-09-19; this is publication authorization, not a claim of lawyer review.';
@@ -63,12 +62,6 @@ const topicMeta = {
   '继承与遗嘱':['inheritance','inheritance-estate-after-divorce-division'],
   '上海与综合咨询':['shanghai-consultation','divorce-agreement-lawyer-review-rewrite'],
 };
-const topicHero = {
-  '离婚程序':'pregnancy-divorce-rules/pregnancy-divorce-hero.webp','房产与财产':'premarital-home-mortgage-divorce-compensation/hero.webp',
-  '子女抚养':'child-custody-father-caregiving-evidence/hero.webp','夫妻债务':'spousal-debt-liability-three-tests/hero.webp',
-  '股权与经营资产':'divorce-company-shares-dividends-assets/hero.webp','婚姻家庭协议':'prenuptial-agreement-income-caregiving/hero.webp',
-  '继承与遗嘱':'inheritance-estate-after-divorce-division/hero.webp','上海与综合咨询':'divorce-agreement-lawyer-review-rewrite/hero.webp',
-};
 
 const run = (text, href) => ({ text, ...(href ? { href } : {}) });
 const para = (text) => ({ type: 'paragraph', runs: [run(text)] });
@@ -106,11 +99,11 @@ function build(profile, index) {
     slug,status:'published',reviewStatus:'publication-approved',publicationApproval:approval,sourceDocument:feishuLinks[id]||sourceDocument,
     title,summary:direct,serviceSlug,topicSlug:topicMeta[topic][0],subtopicId,relatedSlugs,
     authorId,datePublished:published,dateModified:published,jurisdiction:'中国大陆；涉及上海本地办理条件时以当日官方指引为准',
-    hero:{type:'image',src:heroSrc,alt:`${title}：主题核查示意图，不代表真实个案`,width:1672,height:941},
+    hero:{type:'image',src:heroSrc,alt:`${title}：AI生成的主题场景示意图，不代表真实个案`,width:1672,height:941},
     intro:[para(direct)],
     sourceUrls:sources,
-    sections:sections.map((s,i)=>({id:`section-${i+1}`,title:s.title,paragraphs:s.ps,blocks:[...s.ps.map(para),...(s.tbl?[table(s.tbl.caption,s.tbl.headers,s.tbl.rows)]:[])],sourceRefs:s.refs})),
-    faqs:[],revisionNote:'2026-09-19：依据文章计划首次发布，补充条件化结论、证据表、FAQ、官方法源、专题内链与联系入口。'
+    sections:sections.map((s,i)=>({id:`section-${i+1}`,title:s.title,paragraphs:s.ps,blocks:[...s.ps.map(para),...(s.tbl?[{type:'image',src:`/images/articles/${slug}/evidence-ai.webp`,alt:`${title}：AI生成的证据与办理路径示意图，不代表真实个案或材料`,width:1672,height:941},table(s.tbl.caption,s.tbl.headers,s.tbl.rows)]:[])],sourceRefs:s.refs})),
+    faqs:[],revisionNote:'2026-09-19：依据文章计划首次发布，补充条件化结论、证据表、FAQ、官方法源、专题内链与联系入口；增加每篇独立生成的AI主视觉和证据路径图。'
   };
   const reading=article.sections.at(-2);
   reading.blocks=[
@@ -130,7 +123,6 @@ for (let i=0;i<profiles.length;i++) {
   const dest=`content/posts/${article.slug}.json`;
   await writeFile(dest,JSON.stringify(article,null,2)+'\n');
   const dir=`public/images/articles/${article.slug}`;await mkdir(dir,{recursive:true});
-  await copyFile(`public/images/articles/${topicHero[profiles[i][3]]}`,path.join(dir,'hero.webp'));
   out.push(built);
 }
 await writeFile('../飞书文章审阅/batch20-generated.json',JSON.stringify(out,null,2)+'\n');

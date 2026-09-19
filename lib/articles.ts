@@ -70,6 +70,17 @@ export const publishedArticles = Object.values(modules)
 export function articleSchemas(a: Article) {
   const path = '/insights/' + a.slug + '/';
   const author = findLawyer(a.authorId)!;
+  const articleImages = [
+    ...(a.hero ? [a.hero.src] : []),
+    ...a.sections.flatMap((section) =>
+      (section.blocks || [])
+        .filter(
+          (block): block is Extract<ArticleBlock, { type: 'image' }> =>
+            block.type === 'image',
+        )
+        .map((block) => block.src),
+    ),
+  ].filter((src, index, images) => images.indexOf(src) === index);
   const reviewer =
     a.reviewStatus === 'approved' && a.reviewerId
       ? findLawyer(a.reviewerId)
@@ -91,7 +102,9 @@ export function articleSchemas(a: Article) {
       '@type': 'Article',
       '@id': absolute(path + '#article'),
       headline: a.title,
-      ...(a.hero ? { image: absolute(a.hero.src) } : {}),
+      ...(articleImages.length
+        ? { image: articleImages.map((src) => absolute(src)) }
+        : {}),
       description: a.summary,
       inLanguage: 'zh-CN',
       author: { '@id': personSchema(author)['@id'] },
