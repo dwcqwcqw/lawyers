@@ -10,7 +10,13 @@
 - `npm run export:vercel`：审核文章、构建页面，并导出至 `vercel-static/`。
 - `npm run start -- --ip 127.0.0.1 --port 3000`：构建后在本地运行。
 
-## Vercel 自动部署
+## 正式站部署与 Vercel 备用构建
+
+2026-10-11 起，正式域名及 www 的默认 DNS 指向腾讯云上海轻量服务器 `101.35.246.231`。
+正式站运行完整静态导出，当前页面版本为 `06ef1b4`，目录 `/var/www/anxinlaw-release-06ef1b4`。
+www 与 HTTP 永久跳转至 `https://anxinlaw.xyz`；HTTPS 证书沿用服务器现有 Certbot 自动续期。
+
+**推送 main 只会更新 Vercel 备用部署，不会自动更新腾讯云正式站。** 后续正式发布必须将同一版本的完整静态导出同步到腾讯云，核验文件及线上页面后再记录“官网已发布”。详见 [腾讯云发布约定](docs/tencent-static-deploy.md)。
 
 根目录 `vercel.json` 指定安装、构建命令及输出目录。Vercel 项目 `jianghuai-family-law` 已连接 `dwcqwcqw/lawyers`，生产分支为 `main`。推送后 Vercel 会重新构建全部页面及经过审核的文章。
 
@@ -29,5 +35,5 @@
 发布后运行 `node scripts/check-seo.mjs --live` 检查全部页面、Googlebot、bingbot、Baiduspider 及验证文件。
 运行 `node scripts/submit-indexnow.mjs` 预览；加 `--live` 才会将线上 sitemap 的 URL 提交给 IndexNow。
 提交成功仅表示已接收，不表示已收录或获得排名；未变化的页面不要反复提交。
-Google 通过 Search Console 提交 `https://anxinlaw.xyz/sitemap.xml`，再对首页使用网址检查请求编入索引。
+Google 已通过 Search Console 读取 `https://anxinlaw.xyz/sitemap.txt`（61 页）；XML 地图此前的报告仍有获取错误。两份地图由同一 URL 列表自动生成。首页网址检查已显示收录，其他页面仍以各自检查结果为准。
 百度需要已验证站点的搜索资源平台账号；不要将百度推送 token 写入代码或文档。
