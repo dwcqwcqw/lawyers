@@ -15,6 +15,9 @@ try{
  if(!urls.length)throw new Error('Empty sitemap');
  for(const url of urls){const path=new URL(url).pathname;const r=await fetch(base+path);if(!r.ok)throw new Error('Failed '+path);const html=await r.text();if(!html.includes('18321861851')||html.includes('021-35050167'))throw new Error('Stale contact on '+path);if(html.includes('chatgpt.site'))throw new Error('Old hosting reference on '+path);const destination=resolve(output,'.'+path,'index.html');await mkdir(dirname(destination),{recursive:true});await writeFile(destination,html);}
  await writeFile(output+'/sitemap.xml',sitemap);await writeFile(output+'/robots.txt',await(await fetch(base+'/robots.txt')).text());
+ // Google also supports plain-text sitemaps. Generate from the same URL list
+ // so this fallback remains current when pages are added or removed.
+ await writeFile(output+'/sitemap.txt',urls.join('\n')+'\n');
  const missing=await fetch(base+'/not-a-real-page/');if(missing.status!==404)throw new Error('Expected 404');await writeFile(output+'/404.html',await missing.text());
  const config=JSON.parse(await readFile('vercel.json','utf8'));
  const {framework,installCommand,buildCommand,outputDirectory,...staticConfig}=config;
