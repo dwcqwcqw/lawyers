@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 export const site = {
   name: '上海江怀律师事务所',
   origin: 'https://anxinlaw.xyz',
+  firmWebsite: 'http://www.jianghuailawfirm.com/',
   indexable: true, // Public production site; drafts remain excluded by the publishing gate.
   updated: '2026-09-12',
   phone: '18321861851',
