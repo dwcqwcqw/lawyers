@@ -19,3 +19,15 @@
 文章流程见 [CONTENT_GUIDE.md](CONTENT_GUIDE.md)。电话与微信均为 18321861851，备注为律师助理。索引开关与规范域名在 `lib/site.ts`；正式站已开放索引。
 
 不要将飞书密钥、案卷、当事人材料或未脱敏案例提交到仓库。
+
+## 搜索引擎发现与提交
+
+首页以“上海江怀律师事务所”作为标题首词，正文与结构化数据保留完整品牌名及简称。
+`public/google456e078ec42b1786.html` 是 Search Console 的公开验证文件，需要持续保留。
+`public/indexnow-key.txt` 是 IndexNow 的公开站点验证文件，不授予账号访问权限。
+
+发布后运行 `node scripts/check-seo.mjs --live` 检查全部页面、Googlebot、bingbot、Baiduspider 及验证文件。
+运行 `node scripts/submit-indexnow.mjs` 预览；加 `--live` 才会将线上 sitemap 的 URL 提交给 IndexNow。
+提交成功仅表示已接收，不表示已收录或获得排名；未变化的页面不要反复提交。
+Google 通过 Search Console 提交 `https://anxinlaw.xyz/sitemap.xml`，再对首页使用网址检查请求编入索引。
+百度需要已验证站点的搜索资源平台账号；不要将百度推送 token 写入代码或文档。

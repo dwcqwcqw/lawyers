@@ -53,6 +53,10 @@ for (const url of urls) {
   assert.ok(canon[0].includes('href="' + url + '"'), path + ' canonical');
   const title = html.match(/<title>(.*?)<\/title>/s)?.[1];
   assert.ok(title, path + ' title');
+  if (path === '/') {
+    assert.ok(title.startsWith('上海江怀律师事务所'), 'homepage brand title');
+    assert.ok(html.includes('上海江怀律师事务所 · 婚姻家庭法律服务'), 'visible brand');
+  }
   assert.ok(!titles.has(title), path + ' duplicate title');
   titles.add(title);
   assert.equal([...html.matchAll(/<h1\b/g)].length, 1, path + ' H1');
@@ -125,6 +129,7 @@ if (live) {
   for (const ua of [
     'Googlebot',
     'bingbot',
+    'Baiduspider',
     'OAI-SearchBot',
     'ChatGPT-User',
     'Claude-SearchBot',
@@ -151,6 +156,12 @@ if (live) {
     origin + '/services/divorce/?seo-check=1',
   );
 }
+const googleVerification = await get('/google456e078ec42b1786.html');
+assert.equal(googleVerification.status, 200);
+assert.equal(googleVerification.text.trim(), 'google-site-verification: google456e078ec42b1786.html');
+const indexnowVerification = await get('/indexnow-key.txt');
+assert.equal(indexnowVerification.status, 200);
+assert.match(indexnowVerification.text.trim(), /^[a-zA-Z0-9-]{8,128}$/);
 console.log(
   JSON.stringify(
     {

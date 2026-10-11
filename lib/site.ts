@@ -5,6 +5,7 @@ export const site = {
   firmWebsite: 'http://www.jianghuailawfirm.com/',
   indexable: true, // Public production site; drafts remain excluded by the publishing gate.
   updated: '2026-09-12',
+  homepageUpdated: '2026-10-11',
   phone: '18321861851',
   phoneHref: 'tel:+8618321861851',
   wechat: '18321861851',
@@ -16,7 +17,7 @@ export const site = {
 };
 export const absolute = (path: string) => new URL(path, site.origin).href;
 export function pageMeta(title: string, description: string, path: string): Metadata {
-  return { title: `${title}｜江怀律师事务所`, description, alternates: { canonical: absolute(path) }, robots: { index: site.indexable, follow: true }, openGraph: { type: 'website', locale: 'zh_CN', siteName: site.name, title, description, url: absolute(path) } };
+  return { title: title.startsWith(site.name) ? title : `${title}｜江怀律师事务所`, description, alternates: { canonical: absolute(path) }, robots: { index: site.indexable, follow: true }, openGraph: { type: 'website', locale: 'zh_CN', siteName: site.name, title, description, url: absolute(path) } };
 }
 export const sources = [
   { id: 'civil-code', name: '中华人民共和国民法典', issuer: '全国人民代表大会', url: 'https://www.court.gov.cn/zixun/xiangqing/233181.html', note: '婚姻家庭编、继承编及相关民事规则。' },
