@@ -1,6 +1,17 @@
 # 腾讯云正式站发布约定
 
-记录日期：2026-10-11。正式网站为 `https://anxinlaw.xyz/`，腾讯云上海轻量实例 `lhins-noj80rny`，公网 IP `101.35.246.231`。Vercel 项目继续构建 main，作为备用部署。不要仅凭 Vercel READY 声称正式站已经更新。
+记录日期：2026-10-14。正式网站为 `https://anxinlaw.xyz/`，腾讯云上海轻量实例 `lhins-noj80rny`，公网 IP `101.35.246.231`。Vercel 项目继续构建 main，作为备用部署。不要仅凭 Vercel READY 声称正式站已经更新。
+
+## 2026-10-14 正式站文章与来源链接修复
+
+- 页面提交：`114c268808e654f7d176dbdc00b72fddf8cca311`。正式 HTTPS root 已切换至 `/var/www/anxinlaw-release-114c268`，2026-10-14 16:59:38（Asia/Shanghai）上线。
+- 完整导出共 152 个文件，包含 33 篇已发布文章。服务器逐文件 SHA-256 校验、`nginx -t` 均通过；正式域名 152 个页面和资源响应字节与导出完全一致。
+- 新文章 `/insights/prenuptial-agreement-asset-disclosure/` 与 `/insights/inherited-company-equity-marital-property/` 已返回 200；标题、来源网址附录及两张原稿配图核验通过。部分民法典分编来源链接统一至最高人民法院全文入口，保留法条引用文字。
+- 部署材料分支：`codex/server-static-release-114c268`；不可变提交：`56cdc58aa0ed5d8b00c268a273db59954fa35b58`；完整包 `site.tar.xz` 的 SHA-256 为 `89950506b2a0b8db35a6c00b36dffb02bf4d92f89365a5421c41aa837409ab8c`。
+- 上线前站点与配置备份：`/home/ubuntu/anxinlaw-before-114c268-20261014-085936.tgz`、同名 `.conf`，均为 root 0600。上一版本 `/var/www/anxinlaw-release-14f62f4` 保留，可回滚。
+- 仅替换本项目 HTTPS root；证书、ACME webroot、www/HTTP 跳转与其他项目配置保持原值。GitHub main 推送仍只自动构建 Vercel 备用站，正式服务器同步步骤仍需执行。
+
+以下为此前发布记录。
 
 ## 当前已验收状态
 

@@ -13,7 +13,7 @@
 ## 正式站部署与 Vercel 备用构建
 
 2026-10-11 起，正式域名及 www 的默认 DNS 指向腾讯云上海轻量服务器 `101.35.246.231`。
-正式站运行完整静态导出，当前页面版本为 `14f62f4`，目录 `/var/www/anxinlaw-release-14f62f4`。
+正式站运行完整静态导出，当前页面版本为 `114c268`（2026-10-14），目录 `/var/www/anxinlaw-release-114c268`。
 www 与 HTTP 永久跳转至 `https://anxinlaw.xyz`；HTTPS 证书沿用服务器现有 Certbot 自动续期。
 
 **推送 main 只会更新 Vercel 备用部署，不会自动更新腾讯云正式站。** 后续正式发布必须将同一版本的完整静态导出同步到腾讯云，核验文件及线上页面后再记录“官网已发布”。详见 [腾讯云发布约定](docs/tencent-static-deploy.md)。
