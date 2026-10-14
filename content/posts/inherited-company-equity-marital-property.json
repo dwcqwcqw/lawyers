@@ -15,8 +15,8 @@
   ],
   "authorId": "zhang-ziyuan",
   "authorLine": "作者：张子元｜上海江怀律师事务所合伙人、执行主任\n日期：2026年10月13日",
-  "datePublished": "2026-10-13",
-  "dateModified": "2026-10-13",
+  "datePublished": "2026-10-14",
+  "dateModified": "2026-10-14",
   "jurisdiction": "中国大陆；本文为一般法律信息，个案需核对事实、证据与适用条件。",
   "hero": {
     "type": "image",
@@ -1147,6 +1147,179 @@
         5,
         6,
         7
+      ]
+    },
+    {
+      "id": "source-addresses",
+      "title": "来源网址与核验入口",
+      "paragraphs": [
+        "下列完整网址可复制到浏览器访问；部分平台会先显示外链访问提示。法源及公开资料核验日期：2026年10月14日。",
+        "张子元：\nhttps://anxinlaw.xyz/lawyers/zhang-ziyuan/",
+        "最高人民法院刊载《民法典》：\nhttps://www.court.gov.cn/zixun/xiangqing/233181.html",
+        "《公司法》（2023年修订）：\nhttps://www.samr.gov.cn/xyjgs/flfg/art/2024/art_d4e84936a8a744f8928ac7aec7594345.html",
+        "最高人民法院《关于适用〈公司法〉时间效力的若干规定》：\nhttps://www.court.gov.cn/zixun/xiangqing/436481.html",
+        "最高人民法院婚姻家庭编解释（一）：\nhttps://www.court.gov.cn/fabu/xiangqing/282071.html",
+        "最高人民法院婚姻家庭编解释（二）：\nhttps://www.court.gov.cn/zixun/xiangqing/452771.html",
+        "最高人民法院民事诉讼法解释：\nhttps://www.court.gov.cn/fabu/xiangqing/353651.html",
+        "第一次家事咨询准备清单：\nhttps://anxinlaw.xyz/resources/consultation/",
+        "婚内继承的遗产，一定属于夫妻共同财产吗？：\nhttps://anxinlaw.xyz/insights/inherited-property-during-marriage/",
+        "上海律协《律师办理股东资格确认纠纷业务操作指引（2026）（试行）》：\nhttps://www.lawyers.org.cn/info/d1bfd84f493c4257937119e219b529c0",
+        "股权与企业权益分割服务：\nhttps://anxinlaw.xyz/services/business-assets/",
+        "咨询与到所入口：\nhttps://anxinlaw.xyz/contact/"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "下列完整网址可复制到浏览器访问；部分平台会先显示外链访问提示。法源及公开资料核验日期：2026年10月14日。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "张子元：\n"
+            },
+            {
+              "text": "https://anxinlaw.xyz/lawyers/zhang-ziyuan/",
+              "href": "https://anxinlaw.xyz/lawyers/zhang-ziyuan/"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "最高人民法院刊载《民法典》：\n"
+            },
+            {
+              "text": "https://www.court.gov.cn/zixun/xiangqing/233181.html",
+              "href": "https://www.court.gov.cn/zixun/xiangqing/233181.html"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "《公司法》（2023年修订）：\n"
+            },
+            {
+              "text": "https://www.samr.gov.cn/xyjgs/flfg/art/2024/art_d4e84936a8a744f8928ac7aec7594345.html",
+              "href": "https://www.samr.gov.cn/xyjgs/flfg/art/2024/art_d4e84936a8a744f8928ac7aec7594345.html"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "最高人民法院《关于适用〈公司法〉时间效力的若干规定》：\n"
+            },
+            {
+              "text": "https://www.court.gov.cn/zixun/xiangqing/436481.html",
+              "href": "https://www.court.gov.cn/zixun/xiangqing/436481.html"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "最高人民法院婚姻家庭编解释（一）：\n"
+            },
+            {
+              "text": "https://www.court.gov.cn/fabu/xiangqing/282071.html",
+              "href": "https://www.court.gov.cn/fabu/xiangqing/282071.html"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "最高人民法院婚姻家庭编解释（二）：\n"
+            },
+            {
+              "text": "https://www.court.gov.cn/zixun/xiangqing/452771.html",
+              "href": "https://www.court.gov.cn/zixun/xiangqing/452771.html"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "最高人民法院民事诉讼法解释：\n"
+            },
+            {
+              "text": "https://www.court.gov.cn/fabu/xiangqing/353651.html",
+              "href": "https://www.court.gov.cn/fabu/xiangqing/353651.html"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "第一次家事咨询准备清单：\n"
+            },
+            {
+              "text": "https://anxinlaw.xyz/resources/consultation/",
+              "href": "https://anxinlaw.xyz/resources/consultation/"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "婚内继承的遗产，一定属于夫妻共同财产吗？：\n"
+            },
+            {
+              "text": "https://anxinlaw.xyz/insights/inherited-property-during-marriage/",
+              "href": "https://anxinlaw.xyz/insights/inherited-property-during-marriage/"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "上海律协《律师办理股东资格确认纠纷业务操作指引（2026）（试行）》：\n"
+            },
+            {
+              "text": "https://www.lawyers.org.cn/info/d1bfd84f493c4257937119e219b529c0",
+              "href": "https://www.lawyers.org.cn/info/d1bfd84f493c4257937119e219b529c0"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "股权与企业权益分割服务：\n"
+            },
+            {
+              "text": "https://anxinlaw.xyz/services/business-assets/",
+              "href": "https://anxinlaw.xyz/services/business-assets/"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "咨询与到所入口：\n"
+            },
+            {
+              "text": "https://anxinlaw.xyz/contact/",
+              "href": "https://anxinlaw.xyz/contact/"
+            }
+          ]
+        }
       ]
     }
   ],
