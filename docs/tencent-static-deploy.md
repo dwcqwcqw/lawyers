@@ -2,6 +2,15 @@
 
 记录日期：2026-10-14。正式网站为 `https://anxinlaw.xyz/`，腾讯云上海轻量实例 `lhins-noj80rny`，公网 IP `101.35.246.231`。Vercel 项目继续构建 main，作为备用部署。不要仅凭 Vercel READY 声称正式站已经更新。
 
+## 2026-10-15 全新官网 3 篇
+
+- 页面源码提交：`45a74f8b4fbff7275fd01f684d35dcd9e8bacc29`。2026-10-15 12:22:14（Asia/Shanghai）正式 HTTPS root 切换为 `/var/www/anxinlaw-release-45a74f8`。
+- 全新文章 B03（婚前首付经配偶账户付款）、C03（收入、两个孩子抚养与财产分割）、E03（婚前股票婚后解禁）已公开；不是旧稿补发，不占用或替换昨日名额。
+- 本次完整导出 161 个文件，36 篇发布文章。服务器逐文件 SHA-256、`nginx -t` 均通过；正式域名全部 161 个文件响应字节匹配构建。浏览器逐篇核验完整正文、各两张原图和两个表格。
+- 完整包 SHA-256：`ccb460d395fffe124f5e9c104d7b6428aadc691cc798f16569756922adc10e92`；材料分支 `codex/server-static-release-45a74f8`，不可变材料提交 `c6686c7f6150260ef74e6064825a38e4061db243`。
+- 经已登录的腾讯云 OrcaTerm TAT 上传完整包。GitHub 直连下载过慢且中断，未使用其不完整包；上传后重新校验完整包再部署。
+- 上线前备份 `/home/ubuntu/anxinlaw-before-45a74f8-20261015-042212.tgz` 及同名 `.conf`，root 0600；上一版本 `/var/www/anxinlaw-release-114c268` 保留。仅替换本项目 HTTPS 页面 root，证书、ACME、跳转及其他站点配置保持原值。
+
 ## 2026-10-14 正式站文章与来源链接修复
 
 - 页面提交：`114c268808e654f7d176dbdc00b72fddf8cca311`。正式 HTTPS root 已切换至 `/var/www/anxinlaw-release-114c268`，2026-10-14 16:59:38（Asia/Shanghai）上线。
