@@ -2,6 +2,14 @@
 
 记录日期：2026-10-17。正式网站为 `https://anxinlaw.xyz/`，腾讯云上海轻量实例 `lhins-noj80rny`，公网 IP `101.35.246.231`。Vercel 项目继续构建 main，作为备用部署。不要仅凭 Vercel READY 声称正式站已经更新。
 
+## 2026-10-17 全站页脚 ICP 备案号
+
+- 页面源码提交：`9eed5da719c9170e75853eb88dc6915df953d907`。北京时间 14:50:55 正式 HTTPS root 切换为 `/var/www/anxinlaw-release-9eed5da`。
+- 全站共用页脚添加 `浙ICP备2026082294号-1`，链接到 `https://beian.miit.gov.cn/`；72 个 sitemap 页面及 404 页均包含备案信息。
+- 完整包 193 个文件；SHA-256 为 `d57f5b21e6b5ab3750b87aefaf03e465069c9d060c73275e7ad7bd8de2586347`。通过现有腾讯云 OrcaTerm 上传，服务器逐文件校验、`nginx -t` 和 reload 通过。
+- 上线前备份 `/home/ubuntu/anxinlaw-before-9eed5da-20261017-065053.tgz` 及同名 `.conf`；上一版本 `/var/www/anxinlaw-release-3b68fe4` 保留。
+- 本地完整材料与回读证据：项目根目录 `audit/icp-footer-20261017/`。GitHub main 已同步源码。
+
 ## 2026-10-17 全新官网 3 篇
 
 - 页面源码提交：`3b68fe4692207161077a48dfdebe86c8b3c6fc16`。2026-10-17 10:52:36（Asia/Shanghai）正式 HTTPS root 切换为 `/var/www/anxinlaw-release-3b68fe4`。
