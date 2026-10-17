@@ -1,6 +1,14 @@
 # 腾讯云正式站发布约定
 
-记录日期：2026-10-14。正式网站为 `https://anxinlaw.xyz/`，腾讯云上海轻量实例 `lhins-noj80rny`，公网 IP `101.35.246.231`。Vercel 项目继续构建 main，作为备用部署。不要仅凭 Vercel READY 声称正式站已经更新。
+记录日期：2026-10-17。正式网站为 `https://anxinlaw.xyz/`，腾讯云上海轻量实例 `lhins-noj80rny`，公网 IP `101.35.246.231`。Vercel 项目继续构建 main，作为备用部署。不要仅凭 Vercel READY 声称正式站已经更新。
+
+## 2026-10-17 补完 10 月 16 日官网遗留 3 篇
+
+- 页面源码提交：`2d61969716460c25b32d4e5dc15288433d1d0393`。2026-10-17 10:07:57（Asia/Shanghai）正式 HTTPS root 切换为 `/var/www/anxinlaw-release-2d61969`。
+- B06、C06、E06 为 10 月 16 日未部署的遗留稿，本次首次公开，不计入 10 月 17 日全新官网 3 篇名额；页面日期与实际首次发布日一致。
+- 完整导出 170 个文件、39 篇发布文章。服务器逐文件 SHA-256、`nginx -t` 通过；正式域名全部 170 个响应字节与构建一致，浏览器逐篇核验完整正文、各两张原图和两个表格。
+- 完整包 SHA-256：`f97ff8ddeaa7b438c1ae812bfe09edfafe2cdb5865892328c1c21f88eb765b44`；材料分支 `codex/server-static-release-2d61969`，不可变材料提交 `7fbcc4807b18cb454151045db4d8f224c0123979`。
+- 通过已有腾讯云 OrcaTerm TAT 上传四个部署材料，完整包校验后部署。上线前备份 `/home/ubuntu/anxinlaw-before-2d61969-20261017-020754.tgz` 及同名 `.conf`，root 0600；上一版本 `/var/www/anxinlaw-release-45a74f8` 保留。仅切换本项目 HTTPS 页面 root。
 
 ## 2026-10-15 全新官网 3 篇
 
