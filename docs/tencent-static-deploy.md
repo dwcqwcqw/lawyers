@@ -2,6 +2,14 @@
 
 记录日期：2026-10-17。正式网站为 `https://anxinlaw.xyz/`，腾讯云上海轻量实例 `lhins-noj80rny`，公网 IP `101.35.246.231`。Vercel 项目继续构建 main，作为备用部署。不要仅凭 Vercel READY 声称正式站已经更新。
 
+## 2026-10-17 全新官网 3 篇
+
+- 页面源码提交：`3b68fe4692207161077a48dfdebe86c8b3c6fc16`。2026-10-17 10:52:36（Asia/Shanghai）正式 HTTPS root 切换为 `/var/www/anxinlaw-release-3b68fe4`。
+- B08、C08、E08 为今天全新三篇，与此前 B06/C06/E06 跨日遗留分开统计。完整正文、各两张原图、B08/E08 两个表格及 C08 三个表格、全部超链接逐篇核验通过。
+- 完整导出 193 个文件、42 篇发布文章；含本批外部文章所需的 14 张原稿示意图，作为外部富文本配图的公开来源。服务器逐文件 SHA-256、`nginx -t`、reload 通过，正式域名全部 193 个响应字节与构建一致。
+- 完整包 SHA-256：`1b01b0db6983f9a902b1700649f1d8dacf7b28b0759af159e9993f9ccad54f37`；材料分支 `codex/server-static-release-3b68fe4`，不可变材料提交 `08cb29f7725f7da0866458b77dfcc575846bd8db`。服务器直连 GitHub SSL 超时，改为既有 OrcaTerm TAT 上传同一完整构建包。
+- 上线前备份 `/home/ubuntu/anxinlaw-before-3b68fe4-20261017-025234.tgz` 及同名 `.conf`，root 0600；上一版本 `/var/www/anxinlaw-release-2d61969` 保留。仅切换本项目 HTTPS 页面 root。
+
 ## 2026-10-17 补完 10 月 16 日官网遗留 3 篇
 
 - 页面源码提交：`2d61969716460c25b32d4e5dc15288433d1d0393`。2026-10-17 10:07:57（Asia/Shanghai）正式 HTTPS root 切换为 `/var/www/anxinlaw-release-2d61969`。
