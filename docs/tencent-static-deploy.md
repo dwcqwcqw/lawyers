@@ -1,5 +1,13 @@
 # 腾讯云正式站发布约定
 
+## 2026-10-25 无网站成功记录文章补发（当前正式版本）
+
+- 正式页面源码：`d892ed46f922b3adf41326e539de3bf71a6a58ba`。北京时间 20:15:40 实际切换到 `/var/www/anxinlaw-release-d892ed46f922`；原42篇保留，本次补发61篇，合计103篇、133个 sitemap 页面。
+- C18按用户本次明确指示纳入官网；E17因另一任务已在头条公开而排除。61篇独立法律与GEO复核、115张原表格和122张原图检查通过；不声称真人律师审阅或AI收录。
+- 完整包446文件，SHA-256 `2e02e9008c7794a2c4afdad2e0ba5f5974d65073eafb4160ece255e24b628c38`。经已有OrcaTerm上传，服务器逐文件SHA、Nginx检查、reload及本机HTTPS通过；正式域名全部446文件字节回读匹配，HTTP/www跳转、真实404及腾讯源站sitemap TLS核验通过。
+- 上线前备份 `/home/ubuntu/anxinlaw-before-d892ed46f922-20261025-121536.tgz` 和同名 `.conf`（0600）；原站 `/var/www/anxinlaw-release-9eed5da` 保留。只切换本项目页面root，原证书、ACME、跳转与其他项目配置保留。
+- 完整审计材料在项目根 `audit/official-unrecorded-20261025/`：`server-deployment-result.json` 为服务器原始结果，`release/manifest.json` 为逐文件清单，`publication-verification.json` 为61篇公开URL与全文回读，`production-file-verification.json` 为446文件证据；飞书逐字段回读另见 `official-registration-readback.json`。
+
 记录日期：2026-10-17。正式网站为 `https://anxinlaw.xyz/`，腾讯云上海轻量实例 `lhins-noj80rny`，公网 IP `101.35.246.231`。Vercel 项目继续构建 main，作为备用部署。不要仅凭 Vercel READY 声称正式站已经更新。
 
 ## 2026-10-17 全站页脚 ICP 备案号
