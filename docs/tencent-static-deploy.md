@@ -1,6 +1,13 @@
 # 腾讯云正式站发布约定
 
-## 2026-10-27 全新官网五篇（当前正式版本）
+## 2026-10-27 三篇子栏目分类修订（当前正式版本）
+
+- 修订源码 `73f2252fcf4efb0324e520f14272b949482fe77e`，北京时间10:37:41切换 `/var/www/anxinlaw-release-73f2252fcf4e`。A22归A2诉讼启动与证据，B22归B4异常财产线索，C22归C3探望设计；正文和113篇总数保留，五篇原始首次发布时间仍为10:10:35。
+- 完整包496文件，SHA-256 `eacea0da537a800dad9a706822e2c8f5ab80cf53c7b6f4f885a5f924dec4d0d4`；服务器备份、逐文件校验、Nginx测试/reload及本机HTTPS通过；10:43:36正式域名496/496文件字节一致。HTTP/www返回308，真实不存在页面404。
+- 备份 `/home/ubuntu/anxinlaw-before-73f2252fcf4e-20261027-023735.tgz` 及同名.conf（0600），上一613e67dca432版本保留。未改证书、权限或其他站点。
+- 证据 `audit/publication-daily-20261027/category-production-readback.json`、`tencent-category-deployed.png`、`official-latest.png`。本次为分类修订，不另算发布篇数或改写原发送时间。
+
+## 2026-10-27 全新官网五篇
 
 - 正式源码 `613e67dca432649a4abbc567fafcedf2289e7ff1`，北京时间10:10:35切换至 `/var/www/anxinlaw-release-613e67dca432`。F21、G21、A22、B22、C22为本日五篇新稿，原108篇保留，现113篇、143个sitemap页面。
 - 实时匹配用户指出另一Chrome的已有腾讯云登录（扩展85a8782b-92d5-4ec5-a6a0-7f30d5f7a425，本次browser2），既有TAT连接正确实例，无需重复扫码。只切换本项目HTTPS root。
