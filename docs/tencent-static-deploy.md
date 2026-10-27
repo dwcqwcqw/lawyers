@@ -1,6 +1,14 @@
 # 腾讯云正式站发布约定
 
-## 2026-10-26 全新官网五篇（当前正式版本）
+## 2026-10-27 全新官网五篇（当前正式版本）
+
+- 正式源码 `613e67dca432649a4abbc567fafcedf2289e7ff1`，北京时间10:10:35切换至 `/var/www/anxinlaw-release-613e67dca432`。F21、G21、A22、B22、C22为本日五篇新稿，原108篇保留，现113篇、143个sitemap页面。
+- 实时匹配用户指出另一Chrome的已有腾讯云登录（扩展85a8782b-92d5-4ec5-a6a0-7f30d5f7a425，本次browser2），既有TAT连接正确实例，无需重复扫码。只切换本项目HTTPS root。
+- 完整包496文件，SHA-256 `37356ec4159189d2a1b0ab2afe9c1120f39535422bf592bbaa6d82cfdaeacd4d`。服务器逐文件校验、备份、Nginx检查/reload和本机HTTPS通过；10:15:42正式域名496/496响应字节与构建匹配。
+- 备份 `/home/ubuntu/anxinlaw-before-613e67dca432-20261027-021027.tgz` 及同名.conf（0600），上一版本57aac500fd9b保留。证书、ACME、其他项目及访问权限未改。
+- 完整证据 `audit/publication-daily-20261027/production-readback.json`、`tencent-deployed.png`；飞书逐篇窄写回读见verified-registration-readback.json。外站及昨日待审另行统计，不把官网完成算整批完成。
+
+## 2026-10-26 全新官网五篇
 
 - 正式源码 `57aac500fd9b160b9838e30638d685f30fa48515`，北京时间22:19:37切换至 `/var/www/anxinlaw-release-57aac500fd9b`。D20、E20、F20、G20、H20为本日五篇新稿；原103篇保留，现108篇、138个sitemap页面。
 - 经用户指出的另一Chrome已登录会话，使用既有OrcaTerm/TAT连接实例 `lhins-noj80rny`。本次已登录的是扩展实例 `85a8782b-92d5-4ec5-a6a0-7f30d5f7a425`（当时BEI配置/browser4）；浏览器数字ID与登录状态须每次实时确认，不能再因历史默认配置而反复要求扫码。
