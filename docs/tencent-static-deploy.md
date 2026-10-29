@@ -1,5 +1,13 @@
 # 腾讯云正式站发布约定
 
+## 2026-10-29 全新官网五篇与昨日五篇遗留
+
+- 正式页面源码 `42bf2d5c025168259660ed9d1409b4b8e7fdfdbf`，北京时间10:29:33切换至 `/var/www/anxinlaw-release-42bf2d5c0251`。今日全新I12–I16五篇，昨日I02–I06另外补发五篇，不混入今日新稿名额；实际首次上线日期均为10月29日。全站123篇、153个导出HTML页面。
+- 经用户已登录的另一Chrome会话使用现有OrcaTerm/TAT，核对主机VM-0-13-ubuntu、当前Nginx配置哈希与原73f2252fcf4e目录后切换。正确登录仍在BEI扩展85a8782b-92d5-4ec5-a6a0-7f30d5f7a425；不得仅按历史浏览器配置推断腾讯云是否登录。
+- 完整包546文件，SHA-256 `985f827c782e8fc2f691043e80126533ad9ff65d742659fb9d3092c0f1a1d751`。服务器备份、逐文件核对、Nginx检查/reload、本机HTTPS均通过，10:34:53正式域名546/546文件字节一致。十篇正文逐段、原图、表格和真实来源链接另行回读通过。
+- 备份 `/home/ubuntu/anxinlaw-before-42bf2d5c0251-20261029-022924.tgz` 及同名.conf，权限0600；原73f2252fcf4e版本保留。仅切换本项目HTTPS页面root。
+- 证据 `audit/publication-daily-20261029/production-readback.json`、`official-article-readback.json`、`server-deployment-success.png`、`server-deployment-observed.json`；飞书新稿与遗留分别窄写并回读，见verified-registration-readback.json与legacy-official-registration-readback.json。本节只记录已完成发布，不改变正式页面构建内容。
+
 ## 2026-10-27 三篇子栏目分类修订（当前正式版本）
 
 - 修订源码 `73f2252fcf4efb0324e520f14272b949482fe77e`，北京时间10:37:41切换 `/var/www/anxinlaw-release-73f2252fcf4e`。A22归A2诉讼启动与证据，B22归B4异常财产线索，C22归C3探望设计；正文和113篇总数保留，五篇原始首次发布时间仍为10:10:35。
