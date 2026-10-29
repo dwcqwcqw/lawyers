@@ -8,7 +8,7 @@
 - 备份 `/home/ubuntu/anxinlaw-before-42bf2d5c0251-20261029-022924.tgz` 及同名.conf，权限0600；原73f2252fcf4e版本保留。仅切换本项目HTTPS页面root。
 - 证据 `audit/publication-daily-20261029/production-readback.json`、`official-article-readback.json`、`server-deployment-success.png`、`server-deployment-observed.json`；飞书新稿与遗留分别窄写并回读，见verified-registration-readback.json与legacy-official-registration-readback.json。本节只记录已完成发布，不改变正式页面构建内容。
 
-## 2026-10-27 三篇子栏目分类修订（当前正式版本）
+## 2026-10-27 三篇子栏目分类修订
 
 - 修订源码 `73f2252fcf4efb0324e520f14272b949482fe77e`，北京时间10:37:41切换 `/var/www/anxinlaw-release-73f2252fcf4e`。A22归A2诉讼启动与证据，B22归B4异常财产线索，C22归C3探望设计；正文和113篇总数保留，五篇原始首次发布时间仍为10:10:35。
 - 完整包496文件，SHA-256 `eacea0da537a800dad9a706822e2c8f5ab80cf53c7b6f4f885a5f924dec4d0d4`；服务器备份、逐文件校验、Nginx测试/reload及本机HTTPS通过；10:43:36正式域名496/496文件字节一致。HTTP/www返回308，真实不存在页面404。
