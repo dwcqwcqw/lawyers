@@ -1,5 +1,13 @@
 # 腾讯云正式站发布约定
 
+## 2026-10-30 全新官网五篇
+
+- 正式页面源码 `ef9edde56420f5bfded012707488a1746f30673a`，北京时间10:19:50切换至 `/var/www/anxinlaw-release-ef9edde56420`。今天全新I22–I26五篇，原123篇保留，现128篇、158个导出HTML页面；历史稿不计当日名额。
+- 沿用用户指出的另一Chrome已有腾讯云会话（BEI扩展85a8782b-92d5-4ec5-a6a0-7f30d5f7a425），OrcaTerm/TAT连接VM-0-13-ubuntu；未要求重新扫码。写前核对当前Nginx摘要与原42bf2d5c0251目录。
+- 完整包571文件，SHA-256 `626aef38bc6af0db02a98471d14fce14fa2b2e6c183c1c82eb9bd7f5753ca7fc`。服务器完整校验、旧站及配置备份、nginx测试/reload、本机HTTPS均通过；10:25:37正式域名571/571文件字节一致，HTTP/www 308、真实404、sitemap 200；五篇全文、两原图/两表与来源链接逐项核验。
+- 备份 `/home/ubuntu/anxinlaw-before-ef9edde56420-20261030-021939.tgz` 及同名.conf（0600）；原目录保留。仅切换本项目HTTPS root，证书及其他项目配置保留。
+- 证据：`audit/publication-daily-20261030/release/deployment-result.json`、`production-readback.json`、`official-article-readback.json`、`production-route-checks.json`。本节只记录已完成发布，不改变正式页面构建内容。
+
 ## 2026-10-29 全新官网五篇与昨日五篇遗留
 
 - 正式页面源码 `42bf2d5c025168259660ed9d1409b4b8e7fdfdbf`，北京时间10:29:33切换至 `/var/www/anxinlaw-release-42bf2d5c0251`。今日全新I12–I16五篇，昨日I02–I06另外补发五篇，不混入今日新稿名额；实际首次上线日期均为10月29日。全站123篇、153个导出HTML页面。
