@@ -1,10 +1,11 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 import type { Credential } from '@/lib/credentials';
 
 export function CredentialGallery({ items, featured = false }: { items: Credential[]; featured?: boolean }) {
   const dialog = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
   const [selected, setSelected] = useState<Credential | null>(null);
 
   function open(item: Credential) {
@@ -30,10 +31,10 @@ export function CredentialGallery({ items, featured = false }: { items: Credenti
         </div>
       </article>)}
     </div>
-    <dialog ref={dialog} className="credential-dialog" aria-labelledby="credential-dialog-title"
+    <dialog ref={dialog} className="credential-dialog" aria-labelledby={titleId}
       onClick={event => { if (event.target === event.currentTarget) dialog.current?.close(); }}>
       <div className="credential-dialog-header">
-        <h2 id="credential-dialog-title">{selected?.title}</h2>
+        <h2 id={titleId}>{selected?.title}</h2>
         <button className="credential-close" onClick={() => dialog.current?.close()} aria-label="关闭证书预览" autoFocus>关闭 ×</button>
       </div>
       {selected?.image && <img src={selected.image} alt={selected.title + '原件照片'} className={selected.rotation ? 'credential-rotated' : undefined} />}
