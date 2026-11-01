@@ -1,11 +1,19 @@
 # 腾讯云正式站发布约定
 
+## 2026-11-01：用户核查后的新增五篇补发
+
+- 用户发现当天另有已完成新稿后，单独补发官网 J22–J26；与上午 J12–J16 分开计数。源提交 `3530e214121579775e363d5b7a6ad6fb80b732a5`，完整655文件构建、类型及内容检查通过。
+- 既有腾讯云 OrcaTerm 上传 `jianghuai-20261101-supplement.tgz`，上传包 SHA-256 `7a9509b4de01a52e81a558e2116fa9397ae15e70c1e913357e9145d1cbdd3d06`；服务器完整校验、旧站及配置备份、nginx测试/reload、本机HTTPS检查后，于 `2026-11-01T04:20:35.229126+00:00` 切换。
+- 正式目录 `/var/www/anxinlaw-release-3530e2141215`；旧目录 `/var/www/anxinlaw-release-22f78bb0899b` 保留。备份 `/home/ubuntu/anxinlaw-before-3530e2141215-20261101-042027.conf` 及同名 `.tgz`。仅改本项目HTTPS root。
+- 文章正文、原图、表格与引用目标从正式域名回读，证据在 `audit/publication-supplement-20261101/`。外站另补 J27/J28 知乎、J29/J30 美篇、K01 Telegraph，覆盖3站。飞书当日汇总保留上午10篇并追加本次10篇，全日20篇。
+- 上午部署时间微秒部分依服务器 `deployment-result.json` 校正为 `.060143`，不改变实际日期、分钟、篇数和渠道。
+
 ## 2026-11-01：J12–J16 正式部署
 
 - 全新官网稿 J12、J13、J14、J15、J16；源提交 `22f78bb0899bcd412a50e1e724fb9fd764e320f5`。`typecheck`、完整静态导出、内容和 SEO 检查通过；630 文件完整包，`site.tar.xz` SHA-256 为 `73961a947f6c917160d413d378afdbe6f17cdd200f3af56c926b305f83c9baa8`。
 - 腾讯云会话仍在另一 BEI 窗口。扩展枚举超时并不等于会话不存在：用 Chrome“窗口”菜单找到既有 OrcaTerm；原上传认证过期时使用该配置保存的密码恢复登录及既有 TAT 连接，无需另建凭据。窗口超出显示区域会遮住右上角文件按钮，用系统“缩放窗口”恢复可见区域后再操作。不要因此反复要求用户扫码。
 - 服务器直接拉取 GitHub Release 失败（curl 56），改用已有 OrcaTerm 文件管理器上传同一完整包 `jianghuai-20261101-release.tgz`；上传包 SHA-256 `84b665c79329a28c40d5202866880e7aa3fcfd1943bc990c639b35ba71c404f2` 核验一致。公开部署材料保留于仓库 Release `deploy-20261101-22f78bb`，不含凭据。
-- 写前核对 `VM-0-13-ubuntu`、Nginx 摘要 `80280c9223f267d1b4bf90e16585d32d3f975d664bf4b87d2e0581cc8f2a4dd5` 及旧目录 `/var/www/anxinlaw-release-766df615b162`；备份 `/home/ubuntu/anxinlaw-before-22f78bb0899b-20261101-022818.conf` 和同名 `.tgz` 后，仅切换本项目目录至 `/var/www/anxinlaw-release-22f78bb0899b`。服务器630个文件校验、两次 Nginx 检查、reload、本机 HTTPS 均通过，正式切换时间 `2026-11-01T02:28:32.106921+00:00`。
+- 写前核对 `VM-0-13-ubuntu`、Nginx 摘要 `80280c9223f267d1b4bf90e16585d32d3f975d664bf4b87d2e0581cc8f2a4dd5` 及旧目录 `/var/www/anxinlaw-release-766df615b162`；备份 `/home/ubuntu/anxinlaw-before-22f78bb0899b-20261101-022818.conf` 和同名 `.tgz` 后，仅切换本项目目录至 `/var/www/anxinlaw-release-22f78bb0899b`。服务器630个文件校验、两次 Nginx 检查、reload、本机 HTTPS 均通过，正式切换时间 `2026-11-01T02:28:32.060143+00:00`。
 - 正式域名5篇完整正文、原图路径、原生表格和原引用目标已回读。非秘密证据在项目 `audit/publication-daily-20261101/`；当天飞书新稿 J12–J21 与历史队列分开登记，外部 J17/J18 知乎、J19/J20 美篇、J21 Telegraph，覆盖3站。
 
 
